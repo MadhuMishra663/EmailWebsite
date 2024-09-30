@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Register from './components/Register';
 import Login from './components/Login';
 import Onebox from './components/Onebox';
-import './app.css'
+import './App.css'
 
 function App() {
   return (
