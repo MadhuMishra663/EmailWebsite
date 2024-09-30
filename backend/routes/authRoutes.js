@@ -1,22 +1,11 @@
 const express = require('express');
-const passport = require('passport');
 const router = express.Router();
 const authController = require('../controllers/authController');
 
-router.get(
-  '/google',
-  passport.authenticate('google', { scope: ['profile', 'email'] })
-);
+// Register route
+router.post('/register', authController.register);
 
-router.get(
-  '/google/callback',
-  passport.authenticate('google', { failureRedirect: '/' }),
-  (req, res) => {
-    res.redirect('/onebox');
-  }
-);
-
-router.get('/success', authController.loginSuccess);
-router.get('/logout', authController.logout);
+// Login route
+router.post('/login', authController.login);
 
 module.exports = router;

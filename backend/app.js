@@ -1,5 +1,5 @@
-// backend/app.js
 const express = require('express');
+const cors = require('cors');  // Import cors middleware
 const passport = require('passport');
 const session = require('cookie-session');
 const connectDB = require('./config/db');
@@ -7,6 +7,12 @@ const uploadRoutes = require('./routes/uploadRoutes');
 require('dotenv').config(); // Ensure environment variables are loaded
 
 const app = express();
+
+// Enable CORS for all routes
+app.use(cors());  // This will allow all origins (useful during development)
+
+// Alternatively, if you want to allow only specific origin (like your frontend), use this:
+// app.use(cors({ origin: 'http://localhost:5173' }));
 
 // Parse incoming requests with JSON payloads
 app.use(express.json());
